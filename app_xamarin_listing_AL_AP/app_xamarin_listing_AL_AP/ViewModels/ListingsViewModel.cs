@@ -10,26 +10,19 @@ using app_xamarin_listing_AL_AP.Views;
 
 namespace app_xamarin_listing_AL_AP.ViewModels
 {
-    public class ItemsViewModel : BaseViewModel
+    public class ListingsViewModel : BaseViewModel
     {
-        public ObservableCollection<Item> Items { get; set; }
+        public ObservableCollection<Listing> Listings { get; set; }
         public Command LoadItemsCommand { get; set; }
 
-        public ItemsViewModel()
+        public ListingsViewModel()
         {
-            Title = "Browse";
-            Items = new ObservableCollection<Item>();
+            Title = app_xamarin_listing_AL_AP.Ressources.AppResources.Listings;
+            Listings = new ObservableCollection<Listing>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
-
-            MessagingCenter.Subscribe<NewItemPage, Item>(this, "AddItem", async (obj, item) =>
-            {
-                var newItem = item as Item;
-                Items.Add(newItem);
-                await DataStore.AddItemAsync(newItem);
-            });
         }
 
-        async Task ExecuteLoadItemsCommand()
+        private async Task ExecuteLoadItemsCommand()
         {
             if (IsBusy)
                 return;
@@ -38,11 +31,10 @@ namespace app_xamarin_listing_AL_AP.ViewModels
 
             try
             {
-                Items.Clear();
-                var items = await DataStore.GetItemsAsync(true);
-                foreach (var item in items)
+                Listings.Clear();
+                foreach (var item in await DataStore.GetItemsAsync())
                 {
-                    Items.Add(item);
+                    Listings.Add(item);
                 }
             }
             catch (Exception ex)

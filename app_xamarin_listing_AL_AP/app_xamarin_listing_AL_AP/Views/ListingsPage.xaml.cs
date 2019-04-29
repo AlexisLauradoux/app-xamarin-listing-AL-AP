@@ -17,39 +17,39 @@ namespace app_xamarin_listing_AL_AP.Views
     // Learn more about making custom code visible in the Xamarin.Forms previewer
     // by visiting https://aka.ms/xamarinforms-previewer
     [DesignTimeVisible(true)]
-    public partial class ItemsPage : ContentPage
+    public partial class ListingsPage : ContentPage
     {
-        ItemsViewModel viewModel;
+        private ListingsViewModel viewModel;
 
-        public ItemsPage()
+        public ListingsPage()
         {
             InitializeComponent();
 
-            BindingContext = viewModel = new ItemsViewModel();
+            BindingContext = viewModel = new ListingsViewModel();
         }
 
-        async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
+        private async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
         {
-            var item = args.SelectedItem as Item;
+            var item = args.SelectedItem as Listing;
             if (item == null)
                 return;
 
-            await Navigation.PushAsync(new ItemDetailPage(new ItemDetailViewModel(item)));
+            await Navigation.PushAsync(new ListingDetailPage(new ListingDetailViewModel(item)));
 
             // Manually deselect item.
             ItemsListView.SelectedItem = null;
         }
 
-        async void AddItem_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushModalAsync(new NavigationPage(new NewItemPage()));
-        }
+        //async void AddItem_Clicked(object sender, EventArgs e)
+        //{
+        //    await Navigation.PushModalAsync(new NavigationPage(new NewItemPage()));
+        //}
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
 
-            if (viewModel.Items.Count == 0)
+            if (viewModel.Listings.Count == 0)
                 viewModel.LoadItemsCommand.Execute(null);
         }
     }

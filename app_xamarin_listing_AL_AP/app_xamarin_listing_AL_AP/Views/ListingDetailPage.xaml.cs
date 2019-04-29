@@ -12,28 +12,23 @@ namespace app_xamarin_listing_AL_AP.Views
     // Learn more about making custom code visible in the Xamarin.Forms previewer
     // by visiting https://aka.ms/xamarinforms-previewer
     [DesignTimeVisible(true)]
-    public partial class ItemDetailPage : ContentPage
+    public partial class ListingDetailPage : ContentPage
     {
-        ItemDetailViewModel viewModel;
+        private ListingDetailViewModel viewModel;
 
-        public ItemDetailPage(ItemDetailViewModel viewModel)
+        public ListingDetailPage(ListingDetailViewModel viewModel)
         {
             InitializeComponent();
 
             BindingContext = this.viewModel = viewModel;
         }
 
-        public ItemDetailPage()
+        public ListingDetailPage()
         {
             InitializeComponent();
 
-            var item = new Item
-            {
-                Text = "Item 1",
-                Description = "This is an item description."
-            };
+            viewModel = new ListingDetailViewModel(null);
 
-            viewModel = new ItemDetailViewModel(item);
             BindingContext = viewModel;
         }
     }

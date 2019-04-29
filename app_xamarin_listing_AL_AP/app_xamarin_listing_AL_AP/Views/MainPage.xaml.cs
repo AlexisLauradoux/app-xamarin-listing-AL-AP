@@ -31,15 +31,15 @@ namespace app_xamarin_listing_AL_AP.Views
                 switch (id)
                 {
                     case (int)MenuItemType.Listings:
-                        MenuPages.Add(id, new NavigationPage(new ItemsPage()));
+                        MenuPages.Add(id, new NavigationPage(new ListingsPage()));
                         break;
 
                     case (int)MenuItemType.NewListing:
-                        MenuPages.Add(id, new NavigationPage(new ItemsPage()));
+                        MenuPages.Add(id, new NavigationPage(new ListingsPage()));
                         break;
 
                     case (int)MenuItemType.User:
-                        MenuPages.Add(id, new NavigationPage(new ItemsPage()));
+                        MenuPages.Add(id, new NavigationPage(new ListingsPage()));
                         break;
                 }
             }

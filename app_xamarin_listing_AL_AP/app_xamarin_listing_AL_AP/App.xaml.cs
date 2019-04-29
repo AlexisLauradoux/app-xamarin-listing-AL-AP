@@ -1,19 +1,18 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using app_xamarin_listing_AL_AP.Services;
 using app_xamarin_listing_AL_AP.Views;
+using app_xamarin_listing_AL_AP.DAL;
 
 namespace app_xamarin_listing_AL_AP
 {
     public partial class App : Application
     {
-
         public App()
         {
             InitializeComponent();
 
-            DependencyService.Register<MockDataStore>();
+            DependencyService.Register<ListingDataStore>();
             MainPage = new MainPage();
         }
 
