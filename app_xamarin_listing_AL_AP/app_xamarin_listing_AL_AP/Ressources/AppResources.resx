@@ -117,13 +117,61 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AddListingButton" xml:space="preserve">
+    <value>Create listing</value>
+  </data>
+  <data name="Category" xml:space="preserve">
+    <value>Category</value>
+  </data>
+  <data name="CategoryLabel" xml:space="preserve">
+    <value>Category :</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="DescriptionLabel" xml:space="preserve">
+    <value>Description :</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="EmailLabel" xml:space="preserve">
+    <value>Email :</value>
+  </data>
+  <data name="ListingDetails" xml:space="preserve">
+    <value>Details of the listing</value>
+  </data>
   <data name="Listings" xml:space="preserve">
-    <value />
+    <value>Listings list</value>
   </data>
-  <data name="ListingsButton" xml:space="preserve">
-    <value />
+  <data name="LoginButton" xml:space="preserve">
+    <value>Login</value>
   </data>
-  <data name="UserButton" xml:space="preserve">
-    <value />
+  <data name="LoginTitle" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="LogoutButton" xml:space="preserve">
+    <value>Logout</value>
+  </data>
+  <data name="NewListing" xml:space="preserve">
+    <value>New listing</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="PasswordLabel" xml:space="preserve">
+    <value>Password :</value>
+  </data>
+  <data name="Price" xml:space="preserve">
+    <value>Price</value>
+  </data>
+  <data name="PriceLabel" xml:space="preserve">
+    <value>Price :</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Title</value>
+  </data>
+  <data name="TitleLabel" xml:space="preserve">
+    <value>Title :</value>
   </data>
 </root>

@@ -12,12 +12,19 @@ namespace app_xamarin_listing_AL_AP.ViewModels
 {
     public class ListingsViewModel : BaseViewModel
     {
-        public ObservableCollection<Listing> Listings { get; set; }
+        private ObservableCollection<Listing> listings = null;
+
+        public ObservableCollection<Listing> Listings
+        {
+            get { return listings; }
+            set { SetProperty(ref listings, value); }
+        }
+
         public Command LoadItemsCommand { get; set; }
 
         public ListingsViewModel()
         {
-            Title = app_xamarin_listing_AL_AP.Ressources.AppResources.Listings;
+            Title = Ressources.AppResources.Listings;
             Listings = new ObservableCollection<Listing>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
         }
@@ -32,7 +39,7 @@ namespace app_xamarin_listing_AL_AP.ViewModels
             try
             {
                 Listings.Clear();
-                foreach (var item in await DataStore.GetItemsAsync())
+                foreach (var item in await ListingDataStore.GetItemsAsync())
                 {
                     Listings.Add(item);
                 }

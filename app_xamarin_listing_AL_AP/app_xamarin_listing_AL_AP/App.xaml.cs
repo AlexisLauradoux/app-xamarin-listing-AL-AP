@@ -3,6 +3,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using app_xamarin_listing_AL_AP.Views;
 using app_xamarin_listing_AL_AP.DAL;
+using app_xamarin_listing_AL_AP.Services;
 
 namespace app_xamarin_listing_AL_AP
 {
@@ -12,7 +13,11 @@ namespace app_xamarin_listing_AL_AP
         {
             InitializeComponent();
 
+            DependencyService.Register<ApiWebService>();
+
+            DependencyService.Register<CategoryDataStore>();
             DependencyService.Register<ListingDataStore>();
+
             MainPage = new MainPage();
         }
 

@@ -1,7 +1,9 @@
-﻿using System;
+﻿using app_xamarin_listing_AL_AP.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using Xamarin.Essentials;
+using Xamarin.Forms;
 
 namespace app_xamarin_listing_AL_AP.Utilities
 {
@@ -43,15 +45,15 @@ namespace app_xamarin_listing_AL_AP.Utilities
             }
         }
 
-        public static bool IsUserConnected
+        public static bool IsConnected
         {
             get
             {
-                if (!String.IsNullOrWhiteSpace(Login) && !String.IsNullOrWhiteSpace(Password))
-                {
-                    return true;
-                }
-                return false;
+                return Preferences.Get("IsConnected", false);
+            }
+            set
+            {
+                Preferences.Set("IsConnected", value);
             }
         }
     }

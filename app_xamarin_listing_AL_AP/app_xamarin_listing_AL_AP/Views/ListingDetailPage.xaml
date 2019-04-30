@@ -2,12 +2,15 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="app_xamarin_listing_AL_AP.Views.ListingDetailPage"
+             xmlns:i18n="clr-namespace:app_xamarin_listing_AL_AP.Ressources;assembly=app_xamarin_listing_AL_AP"
              Title="{Binding Title}">
 
     <StackLayout Spacing="20" Padding="15">
-        <Label Text="Text:" FontSize="Medium" />
-        <Label Text="{Binding Item.Text}" FontSize="Small" />
-        <Label Text="Description:" FontSize="Medium" />
-        <Label Text="{Binding Item.Description}" FontSize="Small" />
+        <Label Text="{Binding Listing.Title}" FontSize="Large" />
+
+        <Label Text="{i18n:Translate Description}" FontSize="Small" />
+        <Label Text="{Binding Listing.Description}" FontSize="Small" />
+
+        <Label Text="{Binding Listing.Price}" FontSize="Small" />
     </StackLayout>
 </ContentPage>

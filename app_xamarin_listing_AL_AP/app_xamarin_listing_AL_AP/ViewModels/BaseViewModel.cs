@@ -7,12 +7,15 @@ using Xamarin.Forms;
 
 using app_xamarin_listing_AL_AP.Models;
 using app_xamarin_listing_AL_AP.DAL;
+using app_xamarin_listing_AL_AP.Services;
 
 namespace app_xamarin_listing_AL_AP.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
-        public IDataStore<Listing> DataStore => DependencyService.Get<IDataStore<Listing>>() ?? new ListingDataStore();
+        public IDataStore<Listing> ListingDataStore => DependencyService.Get<IDataStore<Listing>>() ?? new ListingDataStore();
+        public IDataStore<Category> CategoryDataStore => DependencyService.Get<IDataStore<Category>>() ?? new CategoryDataStore();
+        internal ApiWebService ApiWebService => DependencyService.Get<ApiWebService>() ?? new ApiWebService();
 
         private bool isBusy = false;
 

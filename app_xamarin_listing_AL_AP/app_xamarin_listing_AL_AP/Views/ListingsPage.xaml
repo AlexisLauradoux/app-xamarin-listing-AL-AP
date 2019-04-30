@@ -4,11 +4,6 @@
              x:Class="app_xamarin_listing_AL_AP.Views.ListingsPage"
               Title="{Binding Title}"
              x:Name="BrowseItemsPage">
-
-    <ContentPage.ToolbarItems>
-        <!--<ToolbarItem Text="Add" Clicked="AddItem_Clicked" />-->
-    </ContentPage.ToolbarItems>
-
     <StackLayout>
         <ListView x:Name="ItemsListView"
             ItemsSource="{Binding Listings}"
@@ -28,6 +23,14 @@
                   Style="{DynamicResource ListItemTextStyle}"
                   FontSize="16" />
                             <Label Text="{Binding Description}"
+                  LineBreakMode="NoWrap"
+                  Style="{DynamicResource ListItemDetailTextStyle}"
+                  FontSize="13" />
+                            <Label Text="{Binding Price}"
+                  LineBreakMode="NoWrap"
+                  Style="{DynamicResource ListItemDetailTextStyle}"
+                  FontSize="13" />
+                            <Label Text="{Binding Category}"
                   LineBreakMode="NoWrap"
                   Style="{DynamicResource ListItemDetailTextStyle}"
                   FontSize="13" />

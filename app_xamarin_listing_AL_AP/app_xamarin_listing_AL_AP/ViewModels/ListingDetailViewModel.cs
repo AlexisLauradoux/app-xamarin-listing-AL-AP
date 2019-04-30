@@ -6,10 +6,17 @@ namespace app_xamarin_listing_AL_AP.ViewModels
 {
     public class ListingDetailViewModel : BaseViewModel
     {
-        public Listing Listing { get; set; }
+        private Listing listing = null;
+
+        public Listing Listing
+        {
+            get { return listing; }
+            set { SetProperty(ref listing, value); }
+        }
 
         public ListingDetailViewModel(Listing listing = null)
         {
+            Title = Ressources.AppResources.ListingDetails;
             Listing = listing;
         }
     }

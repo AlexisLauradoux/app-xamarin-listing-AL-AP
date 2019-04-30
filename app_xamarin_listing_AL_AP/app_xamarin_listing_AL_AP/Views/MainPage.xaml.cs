@@ -35,11 +35,11 @@ namespace app_xamarin_listing_AL_AP.Views
                         break;
 
                     case (int)MenuItemType.NewListing:
-                        MenuPages.Add(id, new NavigationPage(new ListingsPage()));
+                        MenuPages.Add(id, new NavigationPage(new NewListingPage()));
                         break;
 
-                    case (int)MenuItemType.User:
-                        MenuPages.Add(id, new NavigationPage(new ListingsPage()));
+                    case (int)MenuItemType.Login:
+                        MenuPages.Add(id, new NavigationPage(new LoginPage(this)));
                         break;
                 }
             }
