@@ -13,6 +13,8 @@
         <Label Text="{i18n:Translate DescriptionLabel}" FontSize="Small" />
         <Editor HeightRequest="150" Text="{Binding Listing.Description}" Placeholder="{i18n:Translate Description}" />
 
+        <Picker Title="{i18n:Translate DescriptionLabel}" ItemsSource="{Binding Categories}" ItemDisplayBinding="{Binding Name}" SelectedItem="{Binding CategorySelected}}" />
+
         <Label Text="{i18n:Translate PriceLabel}" FontSize="Small" />
         <Entry Keyboard="Numeric" Text="{Binding Listing.Price}"  Placeholder="{i18n:Translate Price}">
             <Entry.Behaviors>

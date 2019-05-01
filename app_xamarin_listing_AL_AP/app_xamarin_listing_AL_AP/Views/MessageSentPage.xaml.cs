@@ -12,15 +12,15 @@ using Xamarin.Forms.Xaml;
 namespace app_xamarin_listing_AL_AP.Views
 {
     [DesignTimeVisible(true)]
-    public partial class NewListingPage : ContentPage
+    public partial class MessageSentPage : ContentPage
     {
-        private NewListingViewModel viewModel;
+        private MessageSentViewModel viewModel;
 
-        public NewListingPage(MainPage mainPage)
+        public MessageSentPage()
         {
             InitializeComponent();
 
-            viewModel = new NewListingViewModel(mainPage);
+            viewModel = new MessageSentViewModel();
 
             BindingContext = viewModel;
         }
@@ -29,8 +29,8 @@ namespace app_xamarin_listing_AL_AP.Views
         {
             base.OnAppearing();
 
-            if (viewModel.Categories.Count == 0)
-                viewModel.GetCategoriesCommand.Execute(null);
+            if (viewModel.Messages.Count == 0)
+                viewModel.LoadItemsCommand.Execute(null);
         }
     }
 }

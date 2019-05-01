@@ -169,6 +169,42 @@ namespace app_xamarin_listing_AL_AP.Ressources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Message.
+        /// </summary>
+        internal static string Message {
+            get {
+                return ResourceManager.GetString("Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Message :.
+        /// </summary>
+        internal static string MessageLabel {
+            get {
+                return ResourceManager.GetString("MessageLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Message receive.
+        /// </summary>
+        internal static string MessageReceive {
+            get {
+                return ResourceManager.GetString("MessageReceive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Message sent.
+        /// </summary>
+        internal static string MessageSent {
+            get {
+                return ResourceManager.GetString("MessageSent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à New listing.
         /// </summary>
         internal static string NewListing {
@@ -210,6 +246,33 @@ namespace app_xamarin_listing_AL_AP.Ressources {
         internal static string PriceLabel {
             get {
                 return ResourceManager.GetString("PriceLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Send.
+        /// </summary>
+        internal static string SendButton {
+            get {
+                return ResourceManager.GetString("SendButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Send message.
+        /// </summary>
+        internal static string SendMessage {
+            get {
+                return ResourceManager.GetString("SendMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Send message.
+        /// </summary>
+        internal static string SendMessageButton {
+            get {
+                return ResourceManager.GetString("SendMessageButton", resourceCulture);
             }
         }
         

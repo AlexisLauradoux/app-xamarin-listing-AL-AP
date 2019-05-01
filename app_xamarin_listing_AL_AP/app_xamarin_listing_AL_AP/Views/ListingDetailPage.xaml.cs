@@ -14,22 +14,11 @@ namespace app_xamarin_listing_AL_AP.Views
     [DesignTimeVisible(true)]
     public partial class ListingDetailPage : ContentPage
     {
-        private ListingDetailViewModel viewModel;
-
-        public ListingDetailPage(ListingDetailViewModel viewModel)
+        public ListingDetailPage(Listing listing)
         {
             InitializeComponent();
 
-            BindingContext = this.viewModel = viewModel;
-        }
-
-        public ListingDetailPage()
-        {
-            InitializeComponent();
-
-            viewModel = new ListingDetailViewModel(null);
-
-            BindingContext = viewModel;
+            BindingContext = new ListingDetailViewModel(listing, this);
         }
     }
 }

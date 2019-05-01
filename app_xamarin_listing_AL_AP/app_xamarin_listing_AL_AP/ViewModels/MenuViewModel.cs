@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using app_xamarin_listing_AL_AP.Models;
+﻿using app_xamarin_listing_AL_AP.Models;
+using app_xamarin_listing_AL_AP.Services;
 using app_xamarin_listing_AL_AP.Utilities;
 using app_xamarin_listing_AL_AP.Views;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace app_xamarin_listing_AL_AP.ViewModels
@@ -35,6 +35,14 @@ namespace app_xamarin_listing_AL_AP.ViewModels
             set { SetProperty(ref loginLogoutButtonText, value); }
         }
 
+        private string email;
+
+        public string Email
+        {
+            get { return email; }
+            set { SetProperty(ref email, value); }
+        }
+
         private async Task<bool> ExecuteLoginLogoutCommand()
         {
             if (IsBusy)
@@ -60,24 +68,39 @@ namespace app_xamarin_listing_AL_AP.ViewModels
             if (Settings.IsConnected)
             {
                 LoginLogoutButtonText = Ressources.AppResources.LogoutButton;
+                MenuItems = new List<HomeMenuItem>
+            {
+                new HomeMenuItem {Id = MenuItemType.Listings, Title=Ressources.AppResources.Listings },
+                new HomeMenuItem {Id = MenuItemType.NewListing, Title=Ressources.AppResources.NewListing },
+                new HomeMenuItem {Id = MenuItemType.MessageReceive, Title=Ressources.AppResources.MessageReceive },
+                new HomeMenuItem {Id = MenuItemType.MessageSent, Title=Ressources.AppResources.MessageSent },
+            };
+                Email = Settings.Email;
             }
             else
             {
                 LoginLogoutButtonText = Ressources.AppResources.LoginButton;
+                MenuItems = new List<HomeMenuItem>
+            {
+                new HomeMenuItem {Id = MenuItemType.Listings, Title=Ressources.AppResources.Listings },
+            };
+                Email = "";
             }
         }
 
         public MenuViewModel()
         {
+            MessagingCenter.Subscribe<ApiWebService>(this, "IsConnected", (MenuViewModel) => { UpdateButton(); });
             MessagingCenter.Subscribe<MenuViewModel>(this, "IsConnected", (MenuViewModel) => { UpdateButton(); });
-            MenuItems = new List<HomeMenuItem>
-            {
-                new HomeMenuItem {Id = MenuItemType.Listings, Title="Listings" },
-                new HomeMenuItem {Id = MenuItemType.NewListing, Title="New listing" },
-            };
             LoginLogoutCommand = new Command(async () => await ExecuteLoginLogoutCommand());
 
             UpdateButton();
+        }
+
+        ~MenuViewModel()
+        {
+            MessagingCenter.Unsubscribe<ApiWebService>(this, "IsConnected");
+            MessagingCenter.Unsubscribe<MenuViewModel>(this, "IsConnected");
         }
     }
 }

@@ -21,10 +21,15 @@ namespace app_xamarin_listing_AL_AP.Views
     {
         private ListingsViewModel viewModel;
 
+        public ListingsPage(MainPage mainPage)
+        {
+            InitializeComponent();
+            BindingContext = viewModel = new ListingsViewModel();
+        }
+
         public ListingsPage()
         {
             InitializeComponent();
-
             BindingContext = viewModel = new ListingsViewModel();
         }
 
@@ -34,7 +39,7 @@ namespace app_xamarin_listing_AL_AP.Views
             if (item == null)
                 return;
 
-            await Navigation.PushAsync(new ListingDetailPage(new ListingDetailViewModel(item)));
+            await Navigation.PushAsync(new ListingDetailPage(item));
 
             // Manually deselect item.
             ItemsListView.SelectedItem = null;

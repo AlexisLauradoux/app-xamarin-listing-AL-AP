@@ -10,7 +10,9 @@
 
         <Label Text="{i18n:Translate Description}" FontSize="Small" />
         <Label Text="{Binding Listing.Description}" FontSize="Small" />
-
+        <Label Text="{Binding Listing.CategoryName}" FontSize="Small" />
         <Label Text="{Binding Listing.Price}" FontSize="Small" />
+
+        <Button IsVisible="{Binding ActiveSendButton}" Command="{Binding SendMessageCommand}" Text="{i18n:Translate SendMessage}"></Button>
     </StackLayout>
 </ContentPage>

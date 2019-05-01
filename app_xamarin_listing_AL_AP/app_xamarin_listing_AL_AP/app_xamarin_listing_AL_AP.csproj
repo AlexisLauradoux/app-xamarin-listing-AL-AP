@@ -28,8 +28,17 @@
     <Compile Update="Views\ListingDetailPage.xaml.cs">
       <DependentUpon>ListingDetailPage.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\SendMessagePage.xaml.cs">
+      <DependentUpon>SendMessagePage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\MessageSentPage.xaml.cs">
+      <DependentUpon>MessageSentPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\MessageReceivePage.xaml.cs">
+      <DependentUpon>MessageReceivePage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 

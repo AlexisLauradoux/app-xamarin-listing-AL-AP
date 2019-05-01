@@ -9,15 +9,15 @@ namespace app_xamarin_listing_AL_AP.Utilities
 {
     public static class Settings
     {
-        public static string Login
+        public static string Email
         {
             get
             {
-                return Preferences.Get("Login", "");
+                return Preferences.Get("Email", "");
             }
             set
             {
-                Preferences.Set("Login", value);
+                Preferences.Set("Email", value);
             }
         }
 
@@ -44,6 +44,18 @@ namespace app_xamarin_listing_AL_AP.Utilities
                 Preferences.Set("Token", value);
             }
         }
+
+        //public static string Id
+        //{
+        //    get
+        //    {
+        //        return Preferences.Get("Id", null);
+        //    }
+        //    set
+        //    {
+        //        Preferences.Set("Id", value);
+        //    }
+        //}
 
         public static bool IsConnected
         {

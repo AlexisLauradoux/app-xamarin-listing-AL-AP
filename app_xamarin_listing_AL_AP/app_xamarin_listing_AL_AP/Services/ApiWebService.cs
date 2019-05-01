@@ -75,6 +75,88 @@ namespace app_xamarin_listing_AL_AP.Services
             return null;
         }
 
+        public async Task<List<Message>> GetMessageSentAsync()
+        {
+            List<Message> resultat = new List<Message>();
+            try
+            {
+                var current = Connectivity.NetworkAccess;
+                if (current == NetworkAccess.Internet)
+                {
+                    HttpClient client = new HttpClient();
+                    client.DefaultRequestHeaders.Add("token", Settings.Token);
+                    var response = await client.GetAsync(ApiUri + "msgsent");
+                    if (response.IsSuccessStatusCode)
+                    {
+                        string jsonbrut = await response.Content.ReadAsStringAsync();
+                        resultat = JsonConvert.DeserializeObject<List<Message>>(jsonbrut);
+                        return resultat;
+                    }
+                    if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+                    {
+                        await Authentification();
+                        client.DefaultRequestHeaders.Remove("token");
+                        client.DefaultRequestHeaders.Add("token", Settings.Token);
+                        response = await client.GetAsync(ApiUri + "msgsent");
+                        if (response.IsSuccessStatusCode)
+                        {
+                            return null;
+                        }
+                    }
+                    return null;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+            return null;
+        }
+
+        public async Task<List<Message>> GetMessageReceiveAsync()
+        {
+            List<Message> resultat = new List<Message>();
+            try
+            {
+                var current = Connectivity.NetworkAccess;
+                if (current == NetworkAccess.Internet)
+                {
+                    HttpClient client = new HttpClient();
+                    client.DefaultRequestHeaders.Add("token", Settings.Token);
+                    var response = await client.GetAsync(ApiUri + "msgreceive");
+                    if (response.IsSuccessStatusCode)
+                    {
+                        string jsonbrut = await response.Content.ReadAsStringAsync();
+                        resultat = JsonConvert.DeserializeObject<List<Message>>(jsonbrut);
+                        return resultat;
+                    }
+                    if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+                    {
+                        await Authentification();
+                        client.DefaultRequestHeaders.Remove("token");
+                        client.DefaultRequestHeaders.Add("token", Settings.Token);
+                        response = await client.GetAsync(ApiUri + "msgreceive");
+                        if (response.IsSuccessStatusCode)
+                        {
+                            return null;
+                        }
+                    }
+                    return null;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+            return null;
+        }
+
         public async Task<bool> CreateListingAsync(Listing listing)
         {
             if (listing == null)
@@ -87,22 +169,68 @@ namespace app_xamarin_listing_AL_AP.Services
                 {
                     HttpClient client = new HttpClient();
                     List<KeyValuePair<string, string>> tuples = new List<KeyValuePair<string, string>>();
-                    tuples.Add(new KeyValuePair<string, string>("category_id", listing.Category));
+                    tuples.Add(new KeyValuePair<string, string>("category_id", listing.Category.Id));
                     tuples.Add(new KeyValuePair<string, string>("content", listing.Description));
                     tuples.Add(new KeyValuePair<string, string>("price", listing.Price.ToString()));
-                    tuples.Add(new KeyValuePair<string, string>("user_id", listing.Auteur));
                     tuples.Add(new KeyValuePair<string, string>("title", listing.Title));
                     HttpContent content = new FormUrlEncodedContent(tuples);
                     content.Headers.Add("token", Settings.Token);
-                    var response = await client.PostAsync(ApiUri + "create", content);
+                    var response = await client.PostAsync(ApiUri + "create-annonce", content);
                     if (response.IsSuccessStatusCode)
                     {
                         return true;
                     }
-                    if (response.StatusCode == System.Net.HttpStatusCode.Forbidden)
+                    if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
                     {
                         await Authentification();
-                        response = await client.PostAsync(ApiUri + "create", content);
+                        content.Headers.Remove("token");
+                        content.Headers.Add("token", Settings.Token);
+                        response = await client.PostAsync(ApiUri + "create-annonce", content);
+                        if (response.IsSuccessStatusCode)
+                        {
+                            return true;
+                        }
+                    }
+                    return false;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+            return false;
+        }
+
+        public async Task<bool> SendMessageAsync(Message message)
+        {
+            if (message == null)
+                return false;
+
+            try
+            {
+                var current = Connectivity.NetworkAccess;
+                if (current == NetworkAccess.Internet)
+                {
+                    HttpClient client = new HttpClient();
+                    List<KeyValuePair<string, string>> tuples = new List<KeyValuePair<string, string>>();
+                    tuples.Add(new KeyValuePair<string, string>("annonce_id", message.IdAnnonce));
+                    tuples.Add(new KeyValuePair<string, string>("content", message.Content));
+                    HttpContent content = new FormUrlEncodedContent(tuples);
+                    content.Headers.Add("token", Settings.Token);
+                    var response = await client.PostAsync(ApiUri + "create-message", content);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        return true;
+                    }
+                    if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+                    {
+                        await Authentification();
+                        content.Headers.Remove("token");
+                        content.Headers.Add("token", Settings.Token);
+                        response = await client.PostAsync(ApiUri + "create-message", content);
                         if (response.IsSuccessStatusCode)
                         {
                             return true;
@@ -130,7 +258,7 @@ namespace app_xamarin_listing_AL_AP.Services
                 {
                     HttpClient client = new HttpClient();
                     Dictionary<string, string> keyValues = new Dictionary<string, string>();
-                    keyValues.Add("email", Settings.Login);
+                    keyValues.Add("email", Settings.Email);
                     keyValues.Add("password", Settings.Password);
                     HttpContent content = new FormUrlEncodedContent(keyValues);
                     var responseHttp = await client.PostAsync(ApiUriAuth, content);

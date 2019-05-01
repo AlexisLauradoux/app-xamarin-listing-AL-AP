@@ -36,18 +36,20 @@ namespace app_xamarin_listing_AL_AP.ViewModels
 
             IsBusy = true;
 
-            Settings.Login = Email;
+            Settings.Email = Email;
             Settings.Password = Password;
 
             string response = await ApiWebService.Authentification();
 
             if (response == null)
             {
+                IsBusy = false;
                 return false;
             }
 
             if (response == string.Empty)
             {
+                IsBusy = false;
                 return false;
             }
 

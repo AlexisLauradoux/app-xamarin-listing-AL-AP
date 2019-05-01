@@ -9,7 +9,9 @@ namespace app_xamarin_listing_AL_AP.Models
         Listings,
         NewListing,
         User,
-        Login
+        Login,
+        MessageReceive,
+        MessageSent
     }
 
     public class HomeMenuItem

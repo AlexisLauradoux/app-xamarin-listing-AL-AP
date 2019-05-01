@@ -5,6 +5,7 @@
               Title="{Binding Title}"
              x:Name="BrowseItemsPage">
     <StackLayout>
+        <SearchBar Text="{Binding SearchText}" SearchCommand="{Binding SearchCommand}"></SearchBar>
         <ListView x:Name="ItemsListView"
             ItemsSource="{Binding Listings}"
             VerticalOptions="FillAndExpand"
@@ -26,11 +27,11 @@
                   LineBreakMode="NoWrap"
                   Style="{DynamicResource ListItemDetailTextStyle}"
                   FontSize="13" />
-                            <Label Text="{Binding Price}"
+                            <Label Text="{Binding CategoryName}"
                   LineBreakMode="NoWrap"
                   Style="{DynamicResource ListItemDetailTextStyle}"
                   FontSize="13" />
-                            <Label Text="{Binding Category}"
+                            <Label Text="{Binding Price}"
                   LineBreakMode="NoWrap"
                   Style="{DynamicResource ListItemDetailTextStyle}"
                   FontSize="13" />

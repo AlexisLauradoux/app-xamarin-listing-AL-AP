@@ -153,6 +153,18 @@
   <data name="LogoutButton" xml:space="preserve">
     <value>Logout</value>
   </data>
+  <data name="Message" xml:space="preserve">
+    <value>Message</value>
+  </data>
+  <data name="MessageLabel" xml:space="preserve">
+    <value>Message :</value>
+  </data>
+  <data name="MessageReceive" xml:space="preserve">
+    <value>Message receive</value>
+  </data>
+  <data name="MessageSent" xml:space="preserve">
+    <value>Message sent</value>
+  </data>
   <data name="NewListing" xml:space="preserve">
     <value>New listing</value>
   </data>
@@ -167,6 +179,15 @@
   </data>
   <data name="PriceLabel" xml:space="preserve">
     <value>Price :</value>
+  </data>
+  <data name="SendButton" xml:space="preserve">
+    <value>Send</value>
+  </data>
+  <data name="SendMessage" xml:space="preserve">
+    <value>Send message</value>
+  </data>
+  <data name="SendMessageButton" xml:space="preserve">
+    <value>Send message</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>Title</value>

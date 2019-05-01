@@ -16,7 +16,7 @@ namespace app_xamarin_listing_AL_AP.Models
         [JsonProperty("title")]
         public string Title { get; set; }
 
-        [JsonProperty("description")]
+        [JsonProperty("content")]
         public string Description { get; set; }
 
         [JsonProperty("author")]
@@ -26,6 +26,8 @@ namespace app_xamarin_listing_AL_AP.Models
         public double Price { get; set; }
 
         [JsonProperty("category")]
-        public string Category { get; set; }
+        public string CategoryName { get; set; }
+
+        public Category Category { get; set; }
     }
 }
