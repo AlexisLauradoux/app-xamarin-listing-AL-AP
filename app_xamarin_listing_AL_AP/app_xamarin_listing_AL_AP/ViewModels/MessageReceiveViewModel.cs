@@ -7,6 +7,8 @@ using Xamarin.Forms;
 
 using app_xamarin_listing_AL_AP.Models;
 using app_xamarin_listing_AL_AP.Views;
+using System.Collections.Generic;
+using app_xamarin_listing_AL_AP.Utilities;
 
 namespace app_xamarin_listing_AL_AP.ViewModels
 {
@@ -39,7 +41,21 @@ namespace app_xamarin_listing_AL_AP.ViewModels
             try
             {
                 Messages.Clear();
-                foreach (var item in await ApiWebService.GetMessageReceiveAsync())
+                List<Message> var = await ApiWebService.GetMessageReceiveAsync();
+                if (var == null)
+                {
+                    IsBusy = false;
+                    Dictionary<string, string> TrackEvent = new Dictionary<string, string>();
+
+                    TrackEvent.Add("Error get messages", "");
+
+                    TrackEvent.Add("User", Settings.Email);
+
+                    Insights.TrackEvent("RecieveMessage", TrackEvent);
+                    await Application.Current.MainPage.DisplayAlert(Ressources.AppResources.Error, Ressources.AppResources.NoConnection, Ressources.AppResources.Ok);
+                    return;
+                }
+                foreach (var item in var)
                 {
                     Messages.Add(item);
                 }
@@ -47,6 +63,7 @@ namespace app_xamarin_listing_AL_AP.ViewModels
             catch (Exception ex)
             {
                 Debug.WriteLine(ex);
+                Insights.ReportError(ex, null);
             }
             finally
             {

@@ -9,6 +9,8 @@ using Xamarin.Forms;
 using app_xamarin_listing_AL_AP.Models;
 using app_xamarin_listing_AL_AP.Views;
 using System.Linq;
+using System.Collections.Generic;
+using app_xamarin_listing_AL_AP.Utilities;
 
 namespace app_xamarin_listing_AL_AP.ViewModels
 {
@@ -32,7 +34,7 @@ namespace app_xamarin_listing_AL_AP.ViewModels
         public string SearchText
         {
             get { return searchText; }
-            set { SetProperty(ref searchText, value); }
+            set { SetProperty(ref searchText, value); SearchCommand.Execute(null); }
         }
 
         public ListingsViewModel()
@@ -54,7 +56,14 @@ namespace app_xamarin_listing_AL_AP.ViewModels
             try
             {
                 Listings.Clear();
-                foreach (var item in await ListingDataStore.GetItemsAsync())
+                List<Listing> var = await ListingDataStore.GetItemsAsync();
+                if (var == null)
+                {
+                    IsBusy = false;
+                    await Application.Current.MainPage.DisplayAlert(Ressources.AppResources.Error, Ressources.AppResources.NoConnection, Ressources.AppResources.Ok);
+                    return;
+                }
+                foreach (var item in var)
                 {
                     Listings.Add(item);
                     listingsAll.Add(item);
@@ -63,6 +72,7 @@ namespace app_xamarin_listing_AL_AP.ViewModels
             catch (Exception ex)
             {
                 Debug.WriteLine(ex);
+                Insights.ReportError(ex, null);
             }
             finally
             {

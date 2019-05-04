@@ -100,7 +100,9 @@ namespace app_xamarin_listing_AL_AP.Services
                         response = await client.GetAsync(ApiUri + "msgsent");
                         if (response.IsSuccessStatusCode)
                         {
-                            return null;
+                            string jsonbrut = await response.Content.ReadAsStringAsync();
+                            resultat = JsonConvert.DeserializeObject<List<Message>>(jsonbrut);
+                            return resultat;
                         }
                     }
                     return null;
@@ -141,7 +143,9 @@ namespace app_xamarin_listing_AL_AP.Services
                         response = await client.GetAsync(ApiUri + "msgreceive");
                         if (response.IsSuccessStatusCode)
                         {
-                            return null;
+                            string jsonbrut = await response.Content.ReadAsStringAsync();
+                            resultat = JsonConvert.DeserializeObject<List<Message>>(jsonbrut);
+                            return resultat;
                         }
                     }
                     return null;
@@ -217,7 +221,7 @@ namespace app_xamarin_listing_AL_AP.Services
                     HttpClient client = new HttpClient();
                     List<KeyValuePair<string, string>> tuples = new List<KeyValuePair<string, string>>();
                     tuples.Add(new KeyValuePair<string, string>("annonce_id", message.IdAnnonce));
-                    tuples.Add(new KeyValuePair<string, string>("content", message.Content));
+                    tuples.Add(new KeyValuePair<string, string>("message", message.Content));
                     HttpContent content = new FormUrlEncodedContent(tuples);
                     content.Headers.Add("token", Settings.Token);
                     var response = await client.PostAsync(ApiUri + "create-message", content);

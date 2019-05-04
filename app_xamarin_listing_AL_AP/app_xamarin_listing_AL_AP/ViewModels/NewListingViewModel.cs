@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using app_xamarin_listing_AL_AP.Models;
+using app_xamarin_listing_AL_AP.Utilities;
 using app_xamarin_listing_AL_AP.Views;
 using Xamarin.Forms;
 
@@ -51,11 +52,30 @@ namespace app_xamarin_listing_AL_AP.ViewModels
             if (await ListingDataStore.AddItemAsync(listing))
             {
                 IsBusy = false;
+
+                Dictionary<string, string> keyValuePairs = new Dictionary<string, string>();
+
+                keyValuePairs.Add("Create", listing.Title);
+
+                keyValuePairs.Add("User", Settings.Email);
+
+                Insights.TrackEvent("Listing", keyValuePairs);
+
                 await mainPage.NavigateFromMenu((int)MenuItemType.Listings);
                 return true;
             }
 
             IsBusy = false;
+
+            Dictionary<string, string> TrackEvent = new Dictionary<string, string>();
+
+            TrackEvent.Add("Error create", listing.Title);
+
+            TrackEvent.Add("User", Settings.Email);
+
+            Insights.TrackEvent("Listing", TrackEvent);
+
+            await Application.Current.MainPage.DisplayAlert(Ressources.AppResources.Error, Ressources.AppResources.ErrorListing, Ressources.AppResources.Ok);
 
             return false;
         }
@@ -77,6 +97,14 @@ namespace app_xamarin_listing_AL_AP.ViewModels
             else
             {
                 Categories = new List<Category>();
+                Dictionary<string, string> TrackEvent = new Dictionary<string, string>();
+
+                TrackEvent.Add("Error get cateories", "");
+
+                TrackEvent.Add("User", Settings.Email);
+
+                Insights.TrackEvent("Categories", TrackEvent);
+                await Application.Current.MainPage.DisplayAlert(Ressources.AppResources.Error, Ressources.AppResources.NoConnection, Ressources.AppResources.Ok);
             }
 
             IsBusy = false;

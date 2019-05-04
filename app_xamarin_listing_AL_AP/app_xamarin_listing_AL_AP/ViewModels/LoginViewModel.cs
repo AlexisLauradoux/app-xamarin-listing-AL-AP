@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using app_xamarin_listing_AL_AP.Models;
 using app_xamarin_listing_AL_AP.Utilities;
@@ -13,7 +14,7 @@ namespace app_xamarin_listing_AL_AP.ViewModels
 
         private MainPage mainPage;
 
-        private string email = null;
+        private string email = Settings.Email;
 
         public string Email
         {
@@ -21,7 +22,7 @@ namespace app_xamarin_listing_AL_AP.ViewModels
             set { SetProperty(ref email, value); }
         }
 
-        private string password = null;
+        private string password = Settings.Password;
 
         public string Password
         {
@@ -44,16 +45,44 @@ namespace app_xamarin_listing_AL_AP.ViewModels
             if (response == null)
             {
                 IsBusy = false;
+
+                Dictionary<string, string> TrackEvent = new Dictionary<string, string>();
+
+                TrackEvent.Add("Connected", "No connection");
+
+                TrackEvent.Add("User", Settings.Email);
+
+                Insights.TrackEvent("User", TrackEvent);
+
+                await mainPage.DisplayAlert(Ressources.AppResources.Error, Ressources.AppResources.NoConnection, Ressources.AppResources.Ok);
                 return false;
             }
 
             if (response == string.Empty)
             {
                 IsBusy = false;
+
+                Dictionary<string, string> TrackEvent = new Dictionary<string, string>();
+
+                TrackEvent.Add("Connected", "false");
+
+                TrackEvent.Add("User", Settings.Email);
+
+                Insights.TrackEvent("User", TrackEvent);
+
+                await mainPage.DisplayAlert(Ressources.AppResources.Error, Ressources.AppResources.UserNoReconize, Ressources.AppResources.Ok);
                 return false;
             }
 
             IsBusy = false;
+
+            Dictionary<string, string> keyValuePairs = new Dictionary<string, string>();
+
+            keyValuePairs.Add("Connected", "true");
+
+            keyValuePairs.Add("User", Settings.Email);
+
+            Insights.TrackEvent("User", keyValuePairs);
 
             await mainPage.NavigateFromMenu((int)MenuItemType.Listings);
 

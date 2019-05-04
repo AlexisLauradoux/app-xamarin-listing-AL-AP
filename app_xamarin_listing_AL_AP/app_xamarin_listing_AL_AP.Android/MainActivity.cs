@@ -6,6 +6,9 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using Microsoft.AppCenter.Crashes;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter;
 
 namespace app_xamarin_listing_AL_AP.Droid
 {
@@ -21,6 +24,9 @@ namespace app_xamarin_listing_AL_AP.Droid
 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
+
+            AppCenter.Start("1ed38cc6-7cf8-4907-8281-bdd0bb7923c2", typeof(Analytics), typeof(Crashes));
+
             LoadApplication(new App());
         }
 

@@ -124,6 +124,33 @@ namespace app_xamarin_listing_AL_AP.Ressources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Error.
+        /// </summary>
+        internal static string Error {
+            get {
+                return ResourceManager.GetString("Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Check your listing and your connection.
+        /// </summary>
+        internal static string ErrorListing {
+            get {
+                return ResourceManager.GetString("ErrorListing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Check your message and your connection.
+        /// </summary>
+        internal static string ErrorMessage {
+            get {
+                return ResourceManager.GetString("ErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Details of the listing.
         /// </summary>
         internal static string ListingDetails {
@@ -214,6 +241,24 @@ namespace app_xamarin_listing_AL_AP.Ressources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Impossible to join the server.
+        /// </summary>
+        internal static string NoConnection {
+            get {
+                return ResourceManager.GetString("NoConnection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Ok.
+        /// </summary>
+        internal static string Ok {
+            get {
+                return ResourceManager.GetString("Ok", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Password.
         /// </summary>
         internal static string Password {
@@ -291,6 +336,24 @@ namespace app_xamarin_listing_AL_AP.Ressources {
         internal static string TitleLabel {
             get {
                 return ResourceManager.GetString("TitleLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Update.
+        /// </summary>
+        internal static string Update {
+            get {
+                return ResourceManager.GetString("Update", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à User not reconize.
+        /// </summary>
+        internal static string UserNoReconize {
+            get {
+                return ResourceManager.GetString("UserNoReconize", resourceCulture);
             }
         }
     }

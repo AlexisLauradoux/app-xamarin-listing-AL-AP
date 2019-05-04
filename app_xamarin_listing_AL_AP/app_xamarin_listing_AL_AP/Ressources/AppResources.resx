@@ -138,6 +138,15 @@
   <data name="EmailLabel" xml:space="preserve">
     <value>Email :</value>
   </data>
+  <data name="Error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="ErrorListing" xml:space="preserve">
+    <value>Check your listing and your connection</value>
+  </data>
+  <data name="ErrorMessage" xml:space="preserve">
+    <value>Check your message and your connection</value>
+  </data>
   <data name="ListingDetails" xml:space="preserve">
     <value>Details of the listing</value>
   </data>
@@ -168,6 +177,12 @@
   <data name="NewListing" xml:space="preserve">
     <value>New listing</value>
   </data>
+  <data name="NoConnection" xml:space="preserve">
+    <value>Impossible to join the server</value>
+  </data>
+  <data name="Ok" xml:space="preserve">
+    <value>Ok</value>
+  </data>
   <data name="Password" xml:space="preserve">
     <value>Password</value>
   </data>
@@ -194,5 +209,11 @@
   </data>
   <data name="TitleLabel" xml:space="preserve">
     <value>Title :</value>
+  </data>
+  <data name="Update" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="UserNoReconize" xml:space="preserve">
+    <value>User not reconize</value>
   </data>
 </root>
