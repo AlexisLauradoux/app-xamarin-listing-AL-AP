@@ -21,8 +21,11 @@
     <AndroidHttpClientHandlerType>Xamarin.Android.Net.AndroidClientHandler</AndroidHttpClientHandlerType>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <AndroidKeyStore>false</AndroidKeyStore>
+    <AndroidKeyStore>true</AndroidKeyStore>
     <AndroidSigningKeyStore>C:\Users\alexi\AppData\Local\Xamarin\Mono for Android\Keystore\projet-meteorite\projet-meteorite.keystore</AndroidSigningKeyStore>
+    <AndroidSigningStorePass>projet-meteorite</AndroidSigningStorePass>
+    <AndroidSigningKeyAlias>projet-meteorite</AndroidSigningKeyAlias>
+    <AndroidSigningKeyPass>projet-meteorite</AndroidSigningKeyPass>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -78,6 +81,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="com.companyname.app_xamarin_listing_AL_AP.apk" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
     <None Include="Properties\AndroidManifest.xml" />
