@@ -6,22 +6,22 @@
              x:Class="app_xamarin_listing_AL_AP.Views.NewListingPage"
              Title="{Binding Title}">
 
-    <StackLayout Spacing="20" Padding="15">
-        <Label Text="{i18n:Translate TitleLabel}" FontSize="Small" />
+    <StackLayout Style="{StaticResource StackLayoutFormStyle }">
+        <Label Text="{i18n:Translate TitleLabel}" />
         <Entry Text="{Binding Listing.Title}"  Placeholder="{i18n:Translate Title}" />
 
-        <Label Text="{i18n:Translate DescriptionLabel}" FontSize="Small" />
+        <Label Text="{i18n:Translate DescriptionLabel}" />
         <Editor HeightRequest="150" Text="{Binding Listing.Description}" Placeholder="{i18n:Translate Description}" />
 
-        <Picker Title="{i18n:Translate DescriptionLabel}" ItemsSource="{Binding Categories}" ItemDisplayBinding="{Binding Name}" SelectedItem="{Binding CategorySelected}}" />
+        <Picker TitleColor="White" Title="{i18n:Translate CategoryLabel}" ItemsSource="{Binding Categories}" ItemDisplayBinding="{Binding Name}" SelectedItem="{Binding CategorySelected}}" />
 
-        <Label Text="{i18n:Translate PriceLabel}" FontSize="Small" />
+        <Label Text="{i18n:Translate PriceLabel}" />
         <Entry Keyboard="Numeric" Text="{Binding Listing.Price}"  Placeholder="{i18n:Translate Price}">
             <Entry.Behaviors>
                 <behavior:NumericValidationBehavior />
             </Entry.Behaviors>
         </Entry>
 
-        <Button Command="{Binding CreateListingCommand}" Text="{i18n:Translate AddListingButton}"></Button>
+        <Button Style="{StaticResource ButtonOrangeStyle}"  IsEnabled="{Binding IsBusy,Converter={StaticResource BoolInverter}, Mode=OneWay}" Command="{Binding CreateListingCommand}" Text="{i18n:Translate AddListingButton}"></Button>
     </StackLayout>
 </ContentPage>

@@ -6,10 +6,9 @@
              x:Class="app_xamarin_listing_AL_AP.Views.SendMessagePage"
              Title="{Binding Title}">
 
-    <StackLayout Spacing="20" Padding="15">
+    <StackLayout Style="{StaticResource StackLayoutFormStyle}">
         <Label Text="{i18n:Translate MessageLabel}" />
         <Entry Text="{Binding Message.Content}" Keyboard="Email" Placeholder="{i18n:Translate Message}" />
-
-        <Button Command="{Binding SendMessageCommand}" Text="{i18n:Translate SendButton}"></Button>
+        <Button Style="{StaticResource ButtonOrangeStyle}" IsEnabled="{Binding IsBusy,Converter={StaticResource BoolInverter}, Mode=OneWay}" Command="{Binding SendMessageCommand}" Text="{i18n:Translate SendButton}"></Button>
     </StackLayout>
 </ContentPage>

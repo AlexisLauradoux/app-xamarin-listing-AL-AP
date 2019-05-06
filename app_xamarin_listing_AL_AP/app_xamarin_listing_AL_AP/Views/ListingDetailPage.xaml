@@ -5,14 +5,11 @@
              xmlns:i18n="clr-namespace:app_xamarin_listing_AL_AP.Ressources;assembly=app_xamarin_listing_AL_AP"
              Title="{Binding Title}">
 
-    <StackLayout Spacing="20" Padding="15">
-        <Label Text="{Binding Listing.Title}" FontSize="Large" />
-
-        <Label Text="{i18n:Translate Description}" FontSize="Small" />
-        <Label Text="{Binding Listing.Description}" FontSize="Small" />
-        <Label Text="{Binding Listing.CategoryName}" FontSize="Small" />
-        <Label Text="{Binding Listing.Price}" FontSize="Small" />
-
-        <Button IsVisible="{Binding ActiveSendButton}" Command="{Binding SendMessageCommand}" Text="{i18n:Translate SendMessage}"></Button>
+    <StackLayout Style="{StaticResource StackLayoutFormStyle}">
+        <Label Style="{StaticResource LabelTitleWhite}" Text="{Binding Listing.Title}" />
+        <Label Style="{StaticResource LabelDescriptionWhite}" Text="{Binding Listing.Description}" />
+        <Label Style="{StaticResource LabelCategoryWhite}" Text="{Binding Listing.CategoryName}" />
+        <Label Style="{StaticResource LabelPriceWhite}" Text="{Binding Listing.Price}" />
+        <Button Style="{StaticResource ButtonOrangeStyle}" IsVisible="{Binding ActiveSendButton}" Command="{Binding SendMessageCommand}" Text="{i18n:Translate SendMessage}"></Button>
     </StackLayout>
 </ContentPage>

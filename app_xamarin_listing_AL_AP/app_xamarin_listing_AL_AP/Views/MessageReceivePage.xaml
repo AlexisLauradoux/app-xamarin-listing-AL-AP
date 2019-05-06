@@ -7,13 +7,13 @@
              Title="{Binding Title}">
 
     <StackLayout>
-        <Button Text="{i18n:Translate Update}" Command="{Binding LoadItemsCommand}" />
+        <Button  IsEnabled="{Binding IsBusy,Converter={StaticResource BoolInverter}, Mode=OneWay}" Text="{i18n:Translate Update}" Command="{Binding LoadItemsCommand}" />
         <ListView x:Name="ItemsListView"
             ItemsSource="{Binding Messages}"
-            VerticalOptions="FillAndExpand"
             HasUnevenRows="true"
             RefreshCommand="{Binding LoadItemsCommand}"
             IsPullToRefreshEnabled="true"
+            SelectionMode="None"
             IsRefreshing="{Binding IsBusy, Mode=OneWay}"
             CachingStrategy="RecycleElement">
             <ListView.ItemTemplate>
@@ -21,9 +21,7 @@
                     <ViewCell>
                         <StackLayout Padding="10">
                             <Label Text="{Binding Content}"
-                  LineBreakMode="NoWrap"
-                  Style="{DynamicResource ListItemTextStyle}"
-                  FontSize="16" />
+                                   Style="{StaticResource LabelMessage}" />
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>

@@ -63,6 +63,12 @@
     <CodesignKey>iPhone Developer</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
   </PropertyGroup>
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'Default' ">
+    <AppExtensionDebugBundleId />
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Icone.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Compile Include="Implements\Localize.cs" />
     <Compile Include="Main.cs" />
@@ -149,5 +155,8 @@
       <Project>{31B6B964-9F65-4C62-B2EA-F25D158D923E}</Project>
       <Name>app_xamarin_listing_AL_AP</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Icone.ico" />
   </ItemGroup>
 </Project>

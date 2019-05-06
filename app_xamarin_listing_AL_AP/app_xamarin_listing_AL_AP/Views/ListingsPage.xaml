@@ -5,10 +5,11 @@
               Title="{Binding Title}"
              x:Name="BrowseItemsPage">
     <StackLayout>
-        <SearchBar Text="{Binding SearchText}" SearchCommand="{Binding SearchCommand}"></SearchBar>
-        <ListView x:Name="ItemsListView"
+        <SearchBar  IsEnabled="{Binding IsBusy,Converter={StaticResource BoolInverter}, Mode=OneWay}" Text="{Binding SearchText}" SearchCommand="{Binding SearchCommand}"></SearchBar>
+        <ListView
+            Style="{StaticResource ListViewListingStyle}"
+            x:Name="ItemsListView"
             ItemsSource="{Binding Listings}"
-            VerticalOptions="FillAndExpand"
             HasUnevenRows="true"
             RefreshCommand="{Binding LoadItemsCommand}"
             IsPullToRefreshEnabled="true"
@@ -18,23 +19,11 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <StackLayout Padding="10">
-                            <Label Text="{Binding Title}"
-                  LineBreakMode="NoWrap"
-                  Style="{DynamicResource ListItemTextStyle}"
-                  FontSize="16" />
-                            <Label Text="{Binding Description}"
-                  LineBreakMode="NoWrap"
-                  Style="{DynamicResource ListItemDetailTextStyle}"
-                  FontSize="13" />
-                            <Label Text="{Binding CategoryName}"
-                  LineBreakMode="NoWrap"
-                  Style="{DynamicResource ListItemDetailTextStyle}"
-                  FontSize="13" />
-                            <Label Text="{Binding Price}"
-                  LineBreakMode="NoWrap"
-                  Style="{DynamicResource ListItemDetailTextStyle}"
-                  FontSize="13" />
+                        <StackLayout>
+                            <Label Style="{StaticResource LabelTitle}" Text="{Binding Title}" />
+                            <Label Style="{StaticResource LabelDescription}" Text="{Binding Description}" />
+                            <Label Style="{StaticResource LabelCategory}" Text="{Binding CategoryName}" />
+                            <Label Style="{StaticResource LabelPrice}" Text="{Binding Price}" />
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>

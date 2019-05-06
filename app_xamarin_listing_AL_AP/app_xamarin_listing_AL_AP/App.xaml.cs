@@ -4,6 +4,8 @@ using Xamarin.Forms.Xaml;
 using app_xamarin_listing_AL_AP.Views;
 using app_xamarin_listing_AL_AP.DAL;
 using app_xamarin_listing_AL_AP.Services;
+using app_xamarin_listing_AL_AP.Ressources;
+using System.Globalization;
 
 namespace app_xamarin_listing_AL_AP
 {

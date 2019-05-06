@@ -6,13 +6,13 @@
              x:Class="app_xamarin_listing_AL_AP.Views.LoginPage"
              Title="{Binding Title}">
 
-    <StackLayout Spacing="20" Padding="15">
-        <Label Text="{i18n:Translate EmailLabel}" />
+    <StackLayout Style="{StaticResource StackLayoutFormStyle}">
+        <Label Style="{StaticResource LabelWhite}" Text="{i18n:Translate EmailLabel}" />
         <Entry Text="{Binding Email}" Keyboard="Email" Placeholder="{i18n:Translate Email}" />
 
-        <Label Text="{i18n:Translate PasswordLabel}" />
+        <Label Style="{StaticResource LabelWhite}" Text="{i18n:Translate PasswordLabel}" />
         <Entry Text="{Binding Password}" IsPassword="True" Placeholder="{i18n:Translate Password}" />
 
-        <Button Command="{Binding LoginCommand}" Text="{i18n:Translate LoginButton}"></Button>
+        <Button Style="{StaticResource ButtonOrangeStyle}" IsEnabled="{Binding IsBusy,Converter={StaticResource BoolInverter}, Mode=OneWay}" Command="{Binding LoginCommand}" Text="{i18n:Translate LoginButton}"></Button>
     </StackLayout>
 </ContentPage>

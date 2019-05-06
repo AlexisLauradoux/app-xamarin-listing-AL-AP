@@ -53,9 +53,11 @@ namespace app_xamarin_listing_AL_AP.ViewModels
             {
                 Settings.IsConnected = false;
                 MessagingCenter.Send<MenuViewModel>(this, "IsConnected");
+                IsBusy = false;
             }
             else
             {
+                IsBusy = false;
                 await RootPage.NavigateFromMenu((int)MenuItemType.Login);
             }
             IsBusy = false;
