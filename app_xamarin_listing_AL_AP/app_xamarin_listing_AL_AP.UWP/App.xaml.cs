@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -30,6 +32,7 @@ namespace app_xamarin_listing_AL_AP.UWP
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+            AppCenter.Start("429fecc3-9dca-4573-940b-dc871b5b97be", typeof(Analytics));
         }
 
         /// <summary>
@@ -39,8 +42,6 @@ namespace app_xamarin_listing_AL_AP.UWP
         /// <param name="e">Details about the launch request and process.</param>
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
-
-
             Frame rootFrame = Window.Current.Content as Frame;
 
             // Do not repeat app initialization when the Window already has content,
@@ -79,7 +80,7 @@ namespace app_xamarin_listing_AL_AP.UWP
         /// </summary>
         /// <param name="sender">The Frame which failed navigation</param>
         /// <param name="e">Details about the navigation failure</param>
-        void OnNavigationFailed(object sender, NavigationFailedEventArgs e)
+        private void OnNavigationFailed(object sender, NavigationFailedEventArgs e)
         {
             throw new Exception("Failed to load Page " + e.SourcePageType.FullName);
         }

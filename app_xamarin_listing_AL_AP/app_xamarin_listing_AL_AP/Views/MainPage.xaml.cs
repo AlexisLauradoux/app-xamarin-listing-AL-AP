@@ -31,15 +31,23 @@ namespace app_xamarin_listing_AL_AP.Views
                 switch (id)
                 {
                     case (int)MenuItemType.Listings:
-                        MenuPages.Add(id, new NavigationPage(new ItemsPage()));
+                        MenuPages.Add(id, new NavigationPage(new ListingsPage(this)));
                         break;
 
                     case (int)MenuItemType.NewListing:
-                        MenuPages.Add(id, new NavigationPage(new ItemsPage()));
+                        MenuPages.Add(id, new NavigationPage(new NewListingPage(this)));
                         break;
 
-                    case (int)MenuItemType.User:
-                        MenuPages.Add(id, new NavigationPage(new ItemsPage()));
+                    case (int)MenuItemType.Login:
+                        MenuPages.Add(id, new NavigationPage(new LoginPage(this)));
+                        break;
+
+                    case (int)MenuItemType.MessageReceive:
+                        MenuPages.Add(id, new NavigationPage(new MessageReceivePage()));
+                        break;
+
+                    case (int)MenuItemType.MessageSent:
+                        MenuPages.Add(id, new NavigationPage(new MessageSentPage()));
                         break;
                 }
             }

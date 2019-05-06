@@ -1,21 +1,23 @@
-﻿using System;
+﻿using app_xamarin_listing_AL_AP.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using Xamarin.Essentials;
+using Xamarin.Forms;
 
 namespace app_xamarin_listing_AL_AP.Utilities
 {
     public static class Settings
     {
-        public static string Login
+        public static string Email
         {
             get
             {
-                return Preferences.Get("Login", "");
+                return Preferences.Get("Email", "");
             }
             set
             {
-                Preferences.Set("Login", value);
+                Preferences.Set("Email", value);
             }
         }
 
@@ -43,15 +45,27 @@ namespace app_xamarin_listing_AL_AP.Utilities
             }
         }
 
-        public static bool IsUserConnected
+        //public static string Id
+        //{
+        //    get
+        //    {
+        //        return Preferences.Get("Id", null);
+        //    }
+        //    set
+        //    {
+        //        Preferences.Set("Id", value);
+        //    }
+        //}
+
+        public static bool IsConnected
         {
             get
             {
-                if (!String.IsNullOrWhiteSpace(Login) && !String.IsNullOrWhiteSpace(Password))
-                {
-                    return true;
-                }
-                return false;
+                return Preferences.Get("IsConnected", false);
+            }
+            set
+            {
+                Preferences.Set("IsConnected", value);
             }
         }
     }

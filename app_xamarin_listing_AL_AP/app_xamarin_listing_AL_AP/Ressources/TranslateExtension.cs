@@ -3,13 +3,16 @@ using System.Globalization;
 using System.Reflection;
 using System.Resources;
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 
 namespace app_xamarin_listing_AL_AP.Ressources
 {
-    internal class TranslateExtension
+    // You exclude the 'Extension' suffix when using in XAML
+    [ContentProperty("Text")]
+    public class TranslateExtension : IMarkupExtension
     {
         private readonly CultureInfo ci = null;
-        private const string ResourceId = "UsingResxLocalization.Resx.AppResources";
+        private const string ResourceId = "app_xamarin_listing_AL_AP.Ressources.AppResources";
 
         private static readonly Lazy<ResourceManager> ResMgr = new Lazy<ResourceManager>(
             () => new ResourceManager(ResourceId, IntrospectionExtensions.GetTypeInfo(typeof(TranslateExtension)).Assembly));

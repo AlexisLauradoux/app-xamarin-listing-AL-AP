@@ -1,4 +1,5 @@
 ﻿using app_xamarin_listing_AL_AP.Models;
+using app_xamarin_listing_AL_AP.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,30 +14,24 @@ namespace app_xamarin_listing_AL_AP.Views
     [DesignTimeVisible(true)]
     public partial class MenuPage : ContentPage
     {
-        private MainPage RootPage { get => Application.Current.MainPage as MainPage; }
-        private List<HomeMenuItem> menuItems;
+        private MenuViewModel viewModel;
 
         public MenuPage()
         {
             InitializeComponent();
 
-            menuItems = new List<HomeMenuItem>
-            {
-                new HomeMenuItem {Id = MenuItemType.User, Title="User" },
-                new HomeMenuItem {Id = MenuItemType.Listings, Title="Listings" },
-                new HomeMenuItem {Id = MenuItemType.NewListing, Title="New listing" },
-            };
+            viewModel = new MenuViewModel();
 
-            ListViewMenu.ItemsSource = menuItems;
+            BindingContext = viewModel;
 
-            ListViewMenu.SelectedItem = menuItems[0];
+            ListViewMenu.SelectedItem = viewModel.MenuItems[0];
             ListViewMenu.ItemSelected += async (sender, e) =>
             {
                 if (e.SelectedItem == null)
                     return;
 
                 var id = (int)((HomeMenuItem)e.SelectedItem).Id;
-                await RootPage.NavigateFromMenu(id);
+                await viewModel.RootPage.NavigateFromMenu(id);
             };
         }
     }
